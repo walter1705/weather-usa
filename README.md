@@ -108,5 +108,5 @@ Parses XML responses from the weather API.
 This project is licensed under the MIT License.
 
 ## Author
-- **Your Name** - [GitHub](https://github.com/yourusername)
+- **Walter1705** - [GitHub](https://github.com/yourusername)
 
