@@ -54,8 +54,22 @@ defmodule WeatherUsa.CLI do
   defp print(%Schema{} = info) do
     info
     |> Map.from_struct()
-    |> Enum.each(fn {atom, content} ->
-      IO.puts("#{Atom.to_string(atom)}: #{content} \n")
+    |> Enum.map(fn {atom, content} ->
+     [["#{Atom.to_string(atom)}: #{content}"]]
     end)
+    |> print_table([Information])
+  end
+
+  def print_table(rows, header) do
+    TableRex.quick_render(rows, header)
+    |> handle_table_response()
+  end
+
+  def handle_table_response({:ok, table}) do
+    table |> IO.puts()
+  end
+
+  def handle_table_response({:error, reason}) do
+    "Printing table eror: #{reason}" |> IO.puts()
   end
 end
