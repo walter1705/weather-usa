@@ -11,7 +11,7 @@ defmodule WeatherUsa.Service.Client do
   id.
   """
   def fetch_forecast(icao_code) do
-    url = "#{@base_url}display.php?stid=#{icao_code}"
+    url = "#{@base_url}#{icao_code}.xml"
 
     HTTPoison.get(url, @user_agent)
     |> handle_response()

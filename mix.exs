@@ -4,6 +4,8 @@ defmodule WeatherUsa.MixProject do
   def project do
     [
       app: :weather_usa,
+      name: "weather on USA within ICAO codes",
+      escript: escript_config(),
       version: "0.1.0",
       elixir: "~> 1.17",
       start_permanent: Mix.env() == :prod,
@@ -24,9 +26,16 @@ defmodule WeatherUsa.MixProject do
       {:sweet_xml, "~> 0.7.5"}, #XML decoder
       {:httpoison, "~> 2.2"}, #HTTP request
       {:ex_doc, "~> 0.37.3"}, #Documentation generator
-      {:earmark, "~> 1.4"} #Markdown to html in ex_doc
+      {:earmark, "~> 1.4"}, #Markdown to html in ex_doc
+      {:table_rex, "~> 4.1"} #Format Tables for print
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+    ]
+  end
+
+  defp escript_config() do
+    [
+      main_module: WeatherUsa.CLI
     ]
   end
 end
